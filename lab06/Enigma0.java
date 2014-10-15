@@ -36,5 +36,5 @@ public class Enigma0{
  *   The error that occured in this enigma was that int n was initialized before the if else scope began, to fix this i moved int n and set it equal to 0
  *   and set it equal to 0 so that it was initialized in the outer scope rather than the inner scope, there was no point in
  *  reinitializing it afterward so i removed that.
- /
+ */
 
