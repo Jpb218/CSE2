@@ -11,7 +11,7 @@ public class MethodCalls{
         System.out.println("Join 87, 42, and 83 to get "+join(87, join(42,83)));
         System.out.println("Join -9 and -90 to get "+join(-9,-90));
     }
- 
+ //original code
 /*
 Add 3 to 784 to get 3784
 Add 3, 4, and 5 to 784 to get 543784
@@ -23,12 +23,12 @@ Join -9 and -90 to get 990
     public static int addDigit(int a, int b){
        int e, d=0;
        
-        if(a<0){
+        if(a<0){//checks to see if the number being added is negative, if it is, it makes it positive
             d=1;
             a*=(-1);
         }
-        else{}
-        if((a)<100){
+        
+        if((a)<100){//depending on the length of a, this adds the correct digit times the number that needs to be added
              e= a+100*b;
         }
         else if(a>=100&&a<1000){
@@ -38,63 +38,60 @@ Join -9 and -90 to get 990
             e= a+10000*b;
         }
         else if(a>=10000&&a<100000){
-            e= a+100000;
+            
+            e= a+100000*b;
         }
-        else if(a>=100000&&a<1000000){
-            e= a+1000000;
+        else if(a>=100000&&a<1000000){//deals with each length
+            e= a+1000000*b;
         }
-        else{
+        else{//if not it just equals the number added
             e= b;
         }
-        if(d==1){
+        if(d==1){//if it was negative, we convert it back
             e*=(-1);
         }
-        else{}
-        return e;
+        
+        return e;//return the final number
     }
 public static int join(int a, int b){
    int g=0, f=0;
-    if(a<0){
+    if(a<0){//checks to make sure the numbers being added are positive, if not it converts until the end
         a*=(-1);
         g=1;
     }
-    else{}
-    if(b<0){
+    
+    if(b<0){//same as the first few lines of this method
         b*=(-1);
         f=1;
     }
-    else{}
     int d=0, e=0;
-    System.out.println(a+" "+b);
-    int c=addDigit(b, a%10);
-    System.out.println(c);
-    if(a>=100){
+    
+    int c=addDigit(b, a%10);//add digits with only the first digit of the number added
+    
+    if(a>=10){//if it has more than one digit, it adds the tens digit
         
-        d=addDigit(c, ((a%100-a%10)));
-        System.out.println(d);
-    }
-    else{
+        d=addDigit(c, (((a%100)-(a%10))/10));
         
     }
-    if(a>=1000){
-        e=addDigit(d, ((a%1000-a%100-a%10)));
+   
+
+    if(a>=100){//if it has more than two, it adds the hundreds digit
+        e=addDigit(d, (((a%1000)-(a%100))/100));
     }
-    else{
-        
-    }
-  if(g==1||f==1){
+  
+  if(g==1||f==1){//if made negative it converts back to positive
     e*=-1;
     d*=-1;
     c*=-1;
   }
-  else{}
-  if(e!=0){
+ 
+  if(e!=0){//if it got to e, it returns e
       return e;
   }
-  else if(d!=0){
+  else if(d!=0){//if it got to d, returns d
       return d;
   }
-  else{
+  else{//if it never activated the d if statement, returns only c
       return c;
   }
 }
